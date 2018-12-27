@@ -15,6 +15,11 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('title')->nullable();
+            $table->text('biography')->nullable();
+            $table->string('website_url');
             $table->timestamps();
         });
     }
